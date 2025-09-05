@@ -32,12 +32,6 @@ Issue: #XXX
 - [ ] Added unit tests
 - [ ] Removed waste on branch (e.g. `console.log`), see [code quality tooling][code-quality-link]
 
-#### Frontend / WebComponent
-
-- [ ] Added component tests (if component was changed)
-- [ ] Considered and tested accessibility (if UI change was made)
-- [ ] Checked / Updated Node.js engine requirements in `package.json` (if dependencies were changed)
-
 #### Backend / EAI
 
 - [ ] Added integration tests

@@ -22,6 +22,11 @@
 hs_err_pid*
 replay_pid*
 
+#=======================
+#Taken from rest-eai
+/${catalina.home}/
+/docs/LHM_COSYS_DMS_REST_EAI.postman_collection.json
+
 # =============== Maven ================
 target/
 pom.xml.tag
