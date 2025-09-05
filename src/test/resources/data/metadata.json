@@ -1,0 +1,16 @@
+{
+  "userlogin": "klaus.mustermann",
+  "addressee": {
+    "orgname": "",
+    "title": "Dr.",
+    "firstname": "Klaus",
+    "name": "Mustermann",
+    "street": "Musterstr.",
+    "streetnumber": "1a",
+    "additional": "",
+    "zipcode": "08152",
+    "city": "Musterdorf",
+    "country": "Deutschland",
+    "email": "klaus.mustermann@server.com"
+  }
+}

@@ -1,0 +1,29 @@
+package de.muenchen.dms.schriftstueck.ausgang.update;
+
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Schema;
+import java.io.File;
+import java.util.List;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@EqualsAndHashCode
+public class UpdateOutgoingRequestBodyDTO {
+
+  @Schema(
+      description = "Parameter die den Ausgang spezifizieren",
+      requiredMode = Schema.RequiredMode.REQUIRED)
+  private UpdateOutgoingRequestDTO params;
+
+  @ArraySchema(
+      arraySchema =
+          @Schema(description = "Liste der Objektadressen und Namen der Schriftstücke im Dokument"),
+      items = @Schema(type = "string", format = "binary"),
+      schema = @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED))
+  private List<File> giattachmenttype;
+}

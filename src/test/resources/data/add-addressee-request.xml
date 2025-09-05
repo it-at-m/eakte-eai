@@ -1,0 +1,22 @@
+<soap:Envelope
+	xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Body>
+		<AddAddressee xmlns="http://schemas.fabasoft.com/websvc/LHMBAI_15_1700_GIWSD/">
+			<userlogin>klaus.mustermann</userlogin>
+			<objaddress>COO.2646.7094.06.456809</objaddress>
+			<addrorgname>
+			</addrorgname>
+			<addrtitle>Dr.</addrtitle>
+			<addrfirstname>Klaus</addrfirstname>
+			<addrname>Mustermann</addrname>
+			<addrstreet>Musterstr.</addrstreet>
+			<addrstreetnumber>1a</addrstreetnumber>
+			<addrzipcode>08152</addrzipcode>
+			<addrcity>Musterdorf</addrcity>
+			<addrcountry>Deutschland</addrcountry>
+			<addremail>klaus.mustermann@server.com</addremail>
+			<addradditional5>
+			</addradditional5>
+		</AddAddressee>
+	</soap:Body>
+</soap:Envelope>

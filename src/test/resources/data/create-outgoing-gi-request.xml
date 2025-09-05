@@ -1,0 +1,16 @@
+<soap:Envelope
+	xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Body>
+		<CreateOutgoingGI xmlns="http://schemas.fabasoft.com/websvc/LHMBAI_15_1700_GIWSD/">
+			<userlogin>klaus.mustermann</userlogin>
+			<accdef>Zugriffsdefinition für Vorgangsdaten der Organisationseinheit</accdef>
+			<giattachmenttype>
+				<LHMBAI_15_1700_GIAttachmentType>
+					<LHMBAI_15_1700_filename>test</LHMBAI_15_1700_filename>
+					<LHMBAI_15_1700_fileextension>txt</LHMBAI_15_1700_fileextension>
+					<LHMBAI_15_1700_filecontent>VGVzdA0KVGVzdDI=</LHMBAI_15_1700_filecontent>
+				</LHMBAI_15_1700_GIAttachmentType>
+			</giattachmenttype>
+		</CreateOutgoingGI>
+	</soap:Body>
+</soap:Envelope>
