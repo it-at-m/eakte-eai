@@ -1,0 +1,123 @@
+camel:
+  springboot:
+    # Sollte sich der Camel Main Thread nach dem Start wieder beenden, folgende Property aktivieren (http://camel.apache.org/spring-boot.html).
+    main-run-controller: true
+    name: CamelServlet
+  servlet:
+    mapping:
+      context-path: "${de.muenchen.rest.api.path}/*"
+  main:
+    tracing: true
+  component:
+    cxf:
+      synchronous: true
+
+springdoc:
+  api-docs:
+    path: "/api-doc"
+  swagger-ui:
+    path: "/swagger-ui.html"
+    urls[0]:
+      name: 'DMS REST EAI'
+      url: '/api-doc'
+    enabled: true
+
+
+logging:
+  level:
+    de:
+      muenchen:
+        dms:
+          common:
+            processor: INFO
+management:
+  info:
+    env:
+      enabled: true
+  endpoints:
+    enabled-by-default: true
+    web:
+      base-path=/actuator:
+      exposure:
+        include: health,info,livenessstate,readinessstate,*
+  endpoint:
+    info:
+      enabled: true
+    health:
+      enabled: true
+      probes:
+        enabled: true
+
+# Bette cosys-eai.properties ein
+info:
+  app:
+    DMS-Endpoint: "${dms.eai.service.url}" #"http://alwdmsappk001a.srv.muenchen.de:17080/fsc/fscdav/wsdl?WEBSVC=LHMBAI_15_1700_GIWSD"
+    name:  "${project.name}" #"dms-rest-eai"
+    description: "${project.description}" #"This application provides a REST interface for external applications to the DMS."
+    version: "${project.version}"
+    api-version: "${api.version}"
+    wsdl-version: "${wsdl.version}"
+    application.commitID: "${buildNumber}"
+    build:
+      date:
+        ${timestamp} UTC
+    contact:
+      name: "DMS REST EAI GIT Repository"
+      url: https://github.com/it-at-m/eakte-eai
+  
+# Swagger Konfiguration für die grafische Oberfläche. Nicht im Quelltext verwenden!
+swagger:
+  schemes: https
+
+# Benutzt in Swagger-UI Endpunkten (URL von coSys, auf die von einem Client, z. B. einem Browser zugegriffen werden kann)
+# z. B. https://cosys-test.muenchen.de
+# server.baseurl=https://cosys-dev.muenchen.de
+server:
+  baseurl: https://localhost
+  shutdown: "graceful"
+  port: 8080
+
+# lokale cosys dms eai url
+eai:
+  baseurl: https://localhost:8080
+
+# server zu server
+#dms.eai.service.url=https://fv-dms-eai-test.muenchen.de:8443/services/dms
+# local/client zu server
+dms:
+  eai:
+    service:  #  EAI <--> DMS
+      url: https://eakte23-k2-authldap.muenchen.de/fsc/fscdav/wsdl?WEBSVC=LHMBAI_15_1700_GIWSD # alte URL: https://dms21-k2-authldap.muenchen.de/fsc/fscdav/wsdl?WEBSVC=LHMBAI_15_1700_GIWSD
+      username: svc-dms.test.dmseai
+      password: #PW
+  # Standardnamensbereich für Anweisungen an Fabasoft
+  default:
+    operation:
+      namespace: http://schemas.fabasoft.com/websvc/LHMBAI_15_1700_GIWSD/
+  # DMS url
+  url: http://eakte23-k2-authldap.muenchen.de/fsc/fscasp/content/bin/fscvext.dll?bx= # alte URL http://dms21-k2-authldap.muenchen.de/fsc/fscasp/content/bin/fscvext.dll?bx=
+  auth:
+    bcrypt:
+      strength: 10
+
+  <<:
+      include: secrets.yml    
+build:
+  dms-eai:
+    version: "0"
+
+# Pfad, der für den REST-Aufruf verwendet wird
+de:
+  muenchen:
+    rest:
+      api:
+        path: "${api.path}"
+        version: "${api.version}"
+application:
+  security:
+    disabled: false
+
+spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 1m
+

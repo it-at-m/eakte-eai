@@ -1,0 +1,87 @@
+camel:
+  springboot:
+    # Sollte sich der Camel Main Thread nach dem Start wieder beenden, folgende Property aktivieren (http://camel.apache.org/spring-boot.html).
+    main-run-controller: true
+    tracing: false
+  servlet:
+    mapping:
+      context-path: "${de.muenchen.rest.api.path}/*"
+
+logging:
+  level:
+    org:
+      springframework: INFO
+management:
+  info:
+    env:
+      enabled: true
+  endpoints:
+    enabled-by-default: false
+    web:
+      base-path=/actuator:
+      exposure:
+        include: health,info
+  endpoint:
+    info:
+      enabled: true
+    health:
+      enabled: true
+
+# Bette cosys-eai.properties ein
+info:
+  app:
+    DMS-Endpoint: "Enpoint-URL for DMS"
+    name:  "${project.name}" #"dms-rest-eai"
+    description: "${project.description}" #"This application provides a REST interface for external applications to the DMS."
+    version: "${project.version}"
+    api-version: "${api.version}"
+    wsdl-version: "${wsdl.version}"
+    application.commitID: "${buildNumber}"
+    build:
+      date:
+        ${timestamp} UTC
+    contact:
+      name: "DMS REST EAI GIT Repository"
+      url: https://git.muenchen.de/dms/eai/rest-eai
+
+# Swagger Konfiguration für die grafische Oberfläche. Nicht im Quelltext verwenden!
+swagger:
+  schemes: http,https
+
+# Benutzt in Swagger-UI Endpunkten (URL von coSys, auf die von einem Client, z. B. einem Browser zugegriffen werden kann)
+# z. B. https://cosys-test.muenchen.de
+# server.baseurl=https://cosys-dev.muenchen.de
+server:
+  baseurl: http://localhost:8080
+
+# lokale cosys dms eai url
+eai:
+  baseurl: http://localhost:8080
+
+# server zu server
+#dms.eai.service.url=https://fv-dms-eai-test.muenchen.de:8443/services/dms
+# local/client zu server
+dms:
+  eai:
+    service:
+      url: ${dms-eai-service-url-dev}
+  # Standardnamensbereich für Anweisungen an Fabasoft
+  default:
+    operation:
+      namespace: http://schemas.fabasoft.com/websvc/LHMBAI_15_1700_GIWSD/
+  # DMS url
+  url: "DMS url" #http://dms21-k2-authldap.muenchen.de/fsc/fscasp/content/bin/fscvext.dll?bx=
+build:
+  dms-eai:
+    version: "0"
+
+# Pfad, der für den REST-Aufruf verwendet wird
+de:
+  muenchen:
+    rest:
+      api:
+        path: "${api.path}"
+
+springdoc:
+  swagger-ui:
+    enabled: false

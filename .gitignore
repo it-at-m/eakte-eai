@@ -27,6 +27,9 @@ replay_pid*
 /${catalina.home}/
 /docs/LHM_COSYS_DMS_REST_EAI.postman_collection.json
 
+src/main/resources/secrets.yml
+
+
 # =============== Maven ================
 target/
 pom.xml.tag
