@@ -11,7 +11,7 @@
 -->
 	<groupId>de.muenchen.eai</groupId>
 	<artifactId>dms-rest-eai</artifactId>
-	<version>1.2.5</version>
+	<version>1.2.5-SNAPSHOT</version>
 	<name>dms-rest-eai</name>
 	<description>This application provides a REST interface for external applications to the DMS</description>
 
