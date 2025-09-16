@@ -30,6 +30,7 @@ logging:
         dms:
           common:
             processor: INFO
+          config: INFO
 management:
   info:
     env:
@@ -87,21 +88,26 @@ eai:
 dms:
   eai:
     service:  #  EAI <--> DMS
-      url: https://eakte23-k2-authldap.muenchen.de/fsc/fscdav/wsdl?WEBSVC=LHMBAI_15_1700_GIWSD # alte URL: https://dms21-k2-authldap.muenchen.de/fsc/fscdav/wsdl?WEBSVC=LHMBAI_15_1700_GIWSD
-      username: svc-dms.test.dmseai
-      password: #PW
+      url: TBD  # defined via deployment descriptor (CAP) or via external application.yml (podman-compose)
+      username: TBD  # defined via deployment descriptor (CAP) or via external application.yml (podman-compose)
+      password: TBD  # defined via deployment descriptor (CAP) or via external application.yml (podman-compose)
   # Standardnamensbereich für Anweisungen an Fabasoft
   default:
     operation:
-      namespace: http://schemas.fabasoft.com/websvc/LHMBAI_15_1700_GIWSD/
+      namespace: TBD  # defined via deployment descriptor (CAP) or via external application.yml (podman-compose)
   # DMS url
-  url: http://eakte23-k2-authldap.muenchen.de/fsc/fscasp/content/bin/fscvext.dll?bx= # alte URL http://dms21-k2-authldap.muenchen.de/fsc/fscasp/content/bin/fscvext.dll?bx=
+  url: TBD  # defined via deployment descriptor (CAP) or via external application.yml (podman-compose)
   auth:
     bcrypt:
       strength: 10
+    users:
+      - username: TBD  # defined via deployment descriptor (CAP) or via external application.yml (podman-compose)
+        password: TBD  # defined via deployment descriptor (CAP) or via external application.yml (podman-compose)
+        roles:
+          - "BASIC"
+    roles:
+      BASIC: WRITE, READ
 
-  <<:
-      include: secrets.yml    
 build:
   dms-eai:
     version: "0"

@@ -3,3 +3,10 @@ FROM registry.access.redhat.com/ubi9/openjdk-21-runtime:1.22-1.1753981256@sha256
 
 # Copy runnable jar to deployments
 COPY target/*.jar /deployments/application.jar
+
+USER 0
+RUN mkdir -p /deployments/eakte-external-config
+USER $CONTAINER_USER_ID
+
+# Definiere den Befehl zum Starten der Anwendung (passe dies an deine Anwendung an)
+CMD ["java", "-jar", "/deployments/application.jar", "--spring.config.additional-location=/deployments/eakte-external-config/application.yml" ]
