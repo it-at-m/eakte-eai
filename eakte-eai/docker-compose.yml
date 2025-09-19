@@ -4,15 +4,20 @@ services:
     # start with image built locally:
     #image: localhost/eakte-rest-eai:1.2.4
     # start with image built within GiHub build pipeline:
-    image: ghcr.io/it-at-m/eakte-eai/eakte-eai
+    image: ghcr.io/it-at-m/eakte-eai/eakte-eai:dev
     hostname: eakte-eai-adapter
     ports:
       - 8080:8080
     environment:
-#      - dms.eai.service.password=very-secret
-      - HTTP_PROXY=c030-floating-pxint-vlan3024.net.muenchen.de:80
+      - http_proxy=c030-floating-pxint-vlan3024.net.muenchen.de:80
     volumes:
       - ./eakte-external-config:/deployments/eakte-external-config
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
 
 
 
