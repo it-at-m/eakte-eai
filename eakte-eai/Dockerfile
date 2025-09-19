@@ -9,4 +9,4 @@ RUN mkdir -p /deployments/eakte-external-config
 USER $CONTAINER_USER_ID
 
 # Definiere den Befehl zum Starten der Anwendung (passe dies an deine Anwendung an)
-CMD ["java", "-jar", "/deployments/application.jar", "-Dhttp.proxyHost=c030-floating-pxint-vlan3024.net.muenchen.de", "-Dhttp.proxyPort=80", "--spring.config.additional-location=/deployments/eakte-external-config/application.yml" ]
+CMD ["java", "-jar", "/deployments/application.jar", "--spring.config.additional-location=/deployments/eakte-external-config/application.yml" ]
