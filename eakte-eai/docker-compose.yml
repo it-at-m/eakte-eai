@@ -1,4 +1,4 @@
-version: "3.1"
+# version: "3.1"
 services:
   eakte-eai-adapter:
     # start with image built locally:
@@ -9,11 +9,10 @@ services:
     ports:
       - 8080:8080
     environment:
-      - dms.eai.service.password=very-secret
+#      - dms.eai.service.password=very-secret
+      - HTTP_PROXY=c030-floating-pxint-vlan3024.net.muenchen.de:80
     volumes:
       - ./eakte-external-config:/deployments/eakte-external-config
 
-volumes:
-  external-config-volume:
-    external: true
+
 

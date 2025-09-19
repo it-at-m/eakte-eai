@@ -25,6 +25,15 @@ Build the application by using `mvn install`
 
 The resulting JAR-File can be run using `java -jar <path_to_the_jar_file>`
 
+### Running with podman
+
+Create the Dir: eakte-eai/eakte-external-config
+Put here the file the application.yml file with the correct data.
+Start a console in the dir: eakte-eai
+call "podman compose up"
+Now the container should start.
+Test this with in you browser with: http://localhost:8080/swagger-ui/index.html
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
