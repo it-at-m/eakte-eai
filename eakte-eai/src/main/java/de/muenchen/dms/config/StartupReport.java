@@ -38,10 +38,27 @@ public class StartupReport {
                 });
 
                 String url = env.getProperty("dms.eai.service.url");
-                String result = restTemplate.getForObject(url,String.class);
+                
 
-                log.info("******************************************");
-                log.info(">> Rest Templat result",result);
-                log.info("******************************************");
+                
+
+
+                
+                log.info("Vor dem API-Aufruf: {}", url);
+                try {
+
+                    String result = restTemplate.getForObject(url,String.class);
+
+                    log.info("******************************************");
+                    log.info(">> Rest Templat result",result);
+                    log.info("******************************************");
+                    
+                   
+                } catch (Exception e) {
+                    log.error("Fehler beim API-Aufruf: ", e);
+                    
+                }
+
+                
     }
 }
