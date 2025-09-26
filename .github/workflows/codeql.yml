@@ -18,7 +18,7 @@ on:
   # Runs on pull requests and on pushes to main (in order to keep the regular scanning by GitHub working)
   pull_request:
   push:
-    branches: [main]
+    branches: [main, proxy-with-github-image]
 
 permissions:
   pull-requests: read
