@@ -19,8 +19,6 @@ This project is built with the following technologies:
 
 ## Set up
 
-WIP
-
 ### Running locally
 
 Build the application by using `mvn install`
