@@ -95,15 +95,4 @@ After the container has started, you can verify that the Swagger-UI is accessibl
 
 If the Swagger UI loads successfully, click the green button at the top of the page labeled "Authorize." Here, you can enter the username and password which you put in `/eakte-external-config/application.yml`
 
-```yaml
-auth:
-    bcrypt:
-      strength: 10
-    users:
-      - username: # create an Username which has to be taken to login to the API - e.g. testuser
-        password: # create a Password. The Password has to be bcrypt with factor 10. Paste it here. Later you also need your password to login to the API - e.g. '$2y$10$l8eaMjg0Co0T7npuD25sHePTq5P/M.mRby5p6I7XiZnZyr/hZOWee' - bcrypt for "testpw"
-        roles:
-          - "BASIC"
-```
-
 Once you have logged in to the API, you can begin sending your first requests.
