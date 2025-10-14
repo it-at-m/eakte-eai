@@ -81,6 +81,8 @@ class CreateProcedureProcessorTest {
       assertThat(gi.getFiletype(), equalTo(dto.getFiletype()));
       assertThat(gi.getJoboe(), equalTo(TestExchanges.getOrganisationseinheit()));
       assertThat(gi.getJobposition(), equalTo(TestExchanges.getStelle()));
+      assertThat(gi.getDefinition(), equalTo(dto.getDefinition()));
+      assertThat(gi.getUserformsdata(), equalTo(dto.getUserformsdata()));
     } else {
       Assertions.fail();
     }

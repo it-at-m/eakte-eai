@@ -5,9 +5,12 @@
 package de.muenchen.dms.schriftstueck.ausgang.anlegen;
 
 import de.muenchen.dms.common.model.DMSContainer;
+import de.muenchen.dms.common.model.UserFormsReferenz;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.time.OffsetDateTime;
+import java.util.List;
+
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -30,7 +33,9 @@ public class CreateOutgoingAnfrageDTO extends DMSContainer {
       OffsetDateTime outgoingdate,
       String subfiletype,
       String doctemplate,
-      String incattachments) {
+      String incattachments,
+      String definition,
+      List<UserFormsReferenz> userformsdata) {
     super(shortname, filesubj, objterms, accdef);
     this.referrednumber = referrednumber;
     this.referredincoming = referredincoming;
@@ -38,6 +43,8 @@ public class CreateOutgoingAnfrageDTO extends DMSContainer {
     this.subfiletype = subfiletype;
     this.doctemplate = doctemplate;
     this.incattachments = incattachments;
+    this.definition = definition;
+    this.userformsdata = userformsdata;
   }
 
   @Schema(
@@ -101,6 +108,10 @@ public class CreateOutgoingAnfrageDTO extends DMSContainer {
       example = "Ausfüllhilfe Antrag auf Baugenehmigung")
   private String incattachments;
 
+  @Schema() private String definition;
+
+  @Schema private List<UserFormsReferenz> userformsdata;
+
   public static CreateOutgoingAnfrageDTO sample() {
     return CreateOutgoingAnfrageDTO.builder()
         .referrednumber("COO.1.2301.1.1042432")
@@ -113,6 +124,8 @@ public class CreateOutgoingAnfrageDTO extends DMSContainer {
         .subfiletype("Test Dokumenttyp")
         .doctemplate("LHM Schreiben Extern")
         .incattachments("Bebauungsplan")
+        .definition("COO.1.2301.1.2222222")
+        .userformsdata(null)
         .build();
   }
 }

@@ -5,8 +5,11 @@
 package de.muenchen.dms.schriftstueck.eingang.anlegen;
 
 import de.muenchen.dms.common.model.DMSContainer;
+import de.muenchen.dms.common.model.UserFormsReferenz;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.OffsetDateTime;
+import java.util.List;
+
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -29,7 +32,9 @@ public class CreateIncomingBasisAnfrageDTO extends DMSContainer {
       String documentremarks,
       String incattachments,
       String objterms,
-      OffsetDateTime delivery) {
+      OffsetDateTime delivery,
+      String definition,
+      List<UserFormsReferenz> userformsdata) {
     super(shortname, filesubj, objterms, accdef);
     this.referrednumber = referrednumber;
     this.useou = useou;
@@ -37,6 +42,8 @@ public class CreateIncomingBasisAnfrageDTO extends DMSContainer {
     this.foreignnr = foreignnr;
     this.documentremarks = documentremarks;
     this.incattachments = incattachments;
+    this.definition = definition;
+    this.userformsdata = userformsdata;
   }
 
   @Schema(
@@ -80,6 +87,10 @@ public class CreateIncomingBasisAnfrageDTO extends DMSContainer {
       example = "Bebauungsplan")
   private String incattachments;
 
+  @Schema() private String definition;
+
+  @Schema private List<UserFormsReferenz> userformsdata;
+
   public static CreateIncomingBasisAnfrageDTO sample() {
     return CreateIncomingBasisAnfrageDTO.builder()
         .objterms("Firma XY; Anträge; Anträge 2016")
@@ -92,6 +103,8 @@ public class CreateIncomingBasisAnfrageDTO extends DMSContainer {
         .foreignnr("A2016-10-2016-Landeshauptstadt-München")
         .documentremarks("Antrag auf Baugenehmigung")
         .incattachments("Bebauungsplan")
+        .definition("COO.1.2301.1.1042432")
+        .userformsdata(null)
         .build();
   }
 }

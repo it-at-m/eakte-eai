@@ -5,10 +5,13 @@
 package de.muenchen.dms.schriftstueck.ausgang.anlegen;
 
 import com.fabasoft.schemas.websvc.lhmbai_15_1700_giwsd.ArrayOfLHMBAI151700GIAttachmentType;
+import com.fabasoft.schemas.websvc.lhmbai_15_1700_giwsd.ArrayOfLHMBAI151700GIUserFormsType;
 import com.fabasoft.schemas.websvc.lhmbai_15_1700_giwsd.CreateOutgoingGI;
 import de.muenchen.dms.common.processor.AbstractDMSSoapProcessor;
 import de.muenchen.dms.common.util.JacksonData;
 import javax.xml.datatype.DatatypeConfigurationException;
+
+import de.muenchen.dms.common.util.Umwandlungen;
 import org.apache.camel.Exchange;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +25,9 @@ public class CreateOutgoingProcessor extends AbstractDMSSoapProcessor {
   public void process(Exchange exchange) throws Exception {
     CreateOutgoingAnfrageDTO dto = getMessageBody(exchange);
 
+    ArrayOfLHMBAI151700GIUserFormsType userFormsType =
+        Umwandlungen.wandleUserFormsGIZuUserFormsReferenz(dto.getUserformsdata());
+
     final ArrayOfLHMBAI151700GIAttachmentType lhmbai151700GIAttachments =
         createLHMBAI151700GIAttachments((createAttachments(exchange)));
     // Erzeuge eine SOAP-Nachricht
@@ -32,7 +38,8 @@ public class CreateOutgoingProcessor extends AbstractDMSSoapProcessor {
             getOrganisationseinheit(exchange),
             getRolle(exchange),
             getAnwendung(exchange),
-            lhmbai151700GIAttachments);
+            lhmbai151700GIAttachments,
+            userFormsType);
     setParameters(exchange, parameters, CreateOutgoingGI.class);
   }
 
@@ -46,7 +53,8 @@ public class CreateOutgoingProcessor extends AbstractDMSSoapProcessor {
       final String organisationseinheit,
       final String rolle,
       final String anwendung,
-      final ArrayOfLHMBAI151700GIAttachmentType lhmbai151700GIAttachments)
+      final ArrayOfLHMBAI151700GIAttachmentType lhmbai151700GIAttachments,
+      final ArrayOfLHMBAI151700GIUserFormsType userFormsType)
       throws DatatypeConfigurationException {
     final CreateOutgoingGI createOutgoingGI = objectFactory.createCreateOutgoingGI();
     createOutgoingGI.setUserlogin(nutzer);
@@ -62,6 +70,8 @@ public class CreateOutgoingProcessor extends AbstractDMSSoapProcessor {
     createOutgoingGI.setObjterms(anfrage.getObjterms());
     createOutgoingGI.setOutgoingdate(JacksonData.toXMLGregorianCalendar(anfrage.getOutgoingdate()));
     createOutgoingGI.setGiattachmenttype(lhmbai151700GIAttachments);
+    createOutgoingGI.setDefinition(anfrage.getDefinition());
+    createOutgoingGI.setUserformsdata(userFormsType);
     createOutgoingGI.setJoboe(organisationseinheit);
     createOutgoingGI.setJobposition(rolle);
     return createOutgoingGI;

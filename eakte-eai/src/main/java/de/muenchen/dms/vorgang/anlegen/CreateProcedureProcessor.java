@@ -4,11 +4,14 @@
  */
 package de.muenchen.dms.vorgang.anlegen;
 
+import com.fabasoft.schemas.websvc.lhmbai_15_1700_giwsd.ArrayOfLHMBAI151700GIUserFormsType;
 import com.fabasoft.schemas.websvc.lhmbai_15_1700_giwsd.CreateProcedureGI;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import de.muenchen.dms.common.processor.AbstractDMSSoapProcessor;
 import de.muenchen.dms.common.util.JacksonData;
 import javax.xml.datatype.DatatypeConfigurationException;
+
+import de.muenchen.dms.common.util.Umwandlungen;
 import org.apache.camel.Exchange;
 import org.springframework.stereotype.Component;
 
@@ -20,6 +23,9 @@ public class CreateProcedureProcessor extends AbstractDMSSoapProcessor {
       throws JsonProcessingException, DatatypeConfigurationException {
     final CreateProcedureDTO anfrage = exchange.getIn().getBody(CreateProcedureDTO.class);
 
+    ArrayOfLHMBAI151700GIUserFormsType userFormsType =
+        Umwandlungen.wandleUserFormsGIZuUserFormsReferenz(anfrage.getUserformsdata());
+
     // Create SOAP input.
     final CreateProcedureGI parameters =
         createCreateProcedureGI(
@@ -27,7 +33,8 @@ public class CreateProcedureProcessor extends AbstractDMSSoapProcessor {
             getNutzer(exchange),
             getOrganisationseinheit(exchange),
             getRolle(exchange),
-            getAnwendung(exchange));
+            getAnwendung(exchange),
+            userFormsType);
     setParameters(exchange, parameters, CreateProcedureGI.class);
   }
 
@@ -36,7 +43,8 @@ public class CreateProcedureProcessor extends AbstractDMSSoapProcessor {
       final String userlogin,
       final String joboe,
       final String jobposition,
-      final String anwendung)
+      final String anwendung,
+      final ArrayOfLHMBAI151700GIUserFormsType userFormsType)
       throws DatatypeConfigurationException {
     final CreateProcedureGI createProcedureGI = objectFactory.createCreateProcedureGI();
     createProcedureGI.setUserlogin(userlogin);
@@ -54,6 +62,8 @@ public class CreateProcedureProcessor extends AbstractDMSSoapProcessor {
         JacksonData.toXMLGregorianCalendar(anfrage.getFileruntimefrom()));
     createProcedureGI.setFileruntimetill(
         JacksonData.toXMLGregorianCalendar(anfrage.getFileruntimetill()));
+    createProcedureGI.setDefinition(anfrage.getDefinition());
+    createProcedureGI.setUserformsdata(userFormsType);
     return createProcedureGI;
   }
 }

@@ -11,7 +11,7 @@
 -->
 <groupId>de.muenchen.eai</groupId>
 <artifactId>dms-rest-eai</artifactId>
-<version>1.2.7-SNAPSHOT</version>
+<version>1.2.5</version>
 <name>dms-rest-eai</name>
 <description>This application provides a REST interface for external applications to the DMS</description>
 
@@ -22,8 +22,8 @@
 
 	<cxf.version>4.1.0</cxf.version>
 	<dms-eai.version>1.9</dms-eai.version>
-	<wsdl.version>1.9</wsdl.version>
-	<api.version>1.2.4</api.version>
+	<wsdl.version>1.10</wsdl.version>
+	<api.version>1.2.5</api.version>
 	<spotless.version>2.43.0</spotless.version>
 	<api.path>/api</api.path>
 	<!-- Rückschritte im Pfad um die Angabe im api.path wieder rückwärts zu überspringen -->

@@ -6,10 +6,14 @@ package de.muenchen.dms.akte.anlegen;
 
 import de.muenchen.dms.akte.AkteBasisDTO;
 import java.time.OffsetDateTime;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import java.util.List;
 
+import de.muenchen.dms.common.model.UserFormsReferenz;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.*;
+
+@Getter
+@Setter
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class CreateFileDTO extends AkteBasisDTO {
@@ -23,7 +27,9 @@ public class CreateFileDTO extends AkteBasisDTO {
       OffsetDateTime fileruntimefrom,
       OffsetDateTime fileruntimetill,
       String fileouobj,
-      String procedureaccdef) {
+      String procedureaccdef,
+      String definition,
+      List<UserFormsReferenz> userformsdata) {
     super(
         apentry,
         shortname,
@@ -34,5 +40,11 @@ public class CreateFileDTO extends AkteBasisDTO {
         fileruntimetill,
         fileouobj,
         procedureaccdef);
+    this.definition = definition;
+    this.userformsdata = userformsdata;
   }
+
+  @Schema() private String definition;
+
+  @Schema private List<UserFormsReferenz> userformsdata;
 }

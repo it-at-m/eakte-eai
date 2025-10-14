@@ -20,6 +20,8 @@ public class TestAkteAnlegenBeispiel {
         .objterms("Testschlagwort")
         .fileruntimefrom(OffsetDateTime.of(2023, 1, 1, 12, 17, 0, 0, ZoneOffset.ofHours(1)))
         .fileruntimetill(OffsetDateTime.of(2023, 11, 7, 9, 13, 0, 0, ZoneOffset.ofHours(1)))
+        .definition("COO.1232.3453.2.2222222")
+        .userformsdata(null)
         .build();
   }
 }

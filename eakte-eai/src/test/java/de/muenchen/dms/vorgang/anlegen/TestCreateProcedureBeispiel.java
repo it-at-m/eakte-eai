@@ -30,6 +30,8 @@ public class TestCreateProcedureBeispiel {
         .objterms("Testschlagwort")
         .fileruntimefrom(OffsetDateTime.of(laufzeitBeginnLocal, laufzeitBeginnZoneOffset))
         .fileruntimetill(OffsetDateTime.of(laufzeitEndeLocal, laufzeitEndeZoneOffset))
+        .definition("COO.1.232.2324.232222")
+        .userformsdata(null)
         .build();
   }
 }

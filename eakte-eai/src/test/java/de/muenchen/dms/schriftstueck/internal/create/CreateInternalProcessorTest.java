@@ -127,6 +127,8 @@ class CreateInternalProcessorTest {
       assertThat(gi.getDoctemplate(), equalTo(dto.getDoctemplate()));
       assertThat(gi.getIncattachments(), equalTo(dto.getIncattachments()));
       assertThat(gi.getObjterms(), equalTo(dto.getObjterms()));
+      assertThat(gi.getDefinition(), equalTo(dto.getDefinition()));
+      assertThat(gi.getUserformsdata(), equalTo(dto.getUserformsdata()));
 
       if (anzahlAnhaenge == 0) {
         assertThat(gi.getGiattachmenttype(), nullValue());

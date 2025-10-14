@@ -131,6 +131,8 @@ class CreateIncomingProcessorTest {
       assertThat(gi.getFilesubj(), equalTo(dto.getFilesubj()));
       assertThat(gi.getDocumentremarks(), equalTo(dto.getDocumentremarks()));
       assertThat(gi.getIncattachments(), equalTo(dto.getIncattachments()));
+      assertThat(gi.getDefinition(), equalTo(dto.getDefinition()));
+      assertThat(gi.getUserformsdata(), equalTo(dto.getUserformsdata()));
       assertThat(gi.getObjterms(), equalTo(dto.getObjterms()));
       assertThat(gi.getJoboe(), equalTo(TestExchanges.getOrganisationseinheit()));
       assertThat(gi.getJobposition(), equalTo(TestExchanges.getStelle()));

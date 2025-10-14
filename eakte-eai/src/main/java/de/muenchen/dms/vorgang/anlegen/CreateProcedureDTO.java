@@ -4,9 +4,12 @@
  */
 package de.muenchen.dms.vorgang.anlegen;
 
+import de.muenchen.dms.common.model.UserFormsReferenz;
 import de.muenchen.dms.vorgang.VorgangBasisDTO;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.OffsetDateTime;
+import java.util.List;
+
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -28,10 +31,14 @@ public class CreateProcedureDTO extends VorgangBasisDTO {
       OffsetDateTime fileruntimefrom,
       OffsetDateTime fileruntimetill,
       String procremark,
-      String filetype) {
+      String filetype,
+      String definition,
+      List<UserFormsReferenz> userformsdata) {
     super(shortname, filesubj, objterms, accdef, fileruntimefrom, fileruntimetill, procremark);
     this.referrednumber = referrednumber;
     this.filetype = filetype;
+    this.definition = definition;
+    this.userformsdata = userformsdata;
   }
 
   @Schema(
@@ -55,4 +62,8 @@ public class CreateProcedureDTO extends VorgangBasisDTO {
           """,
       example = "Elektronisch")
   private String filetype;
+
+  @Schema() private String definition;
+
+  @Schema private List<UserFormsReferenz> userformsdata;
 }

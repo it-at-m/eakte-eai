@@ -1,7 +1,10 @@
 package de.muenchen.dms.schriftstueck.internal.create;
 
+import de.muenchen.dms.common.model.UserFormsReferenz;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.OffsetDateTime;
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -80,6 +83,10 @@ public class CreateInternalBodyParams {
   @Schema(description = "Schlagworte", example = "Firma XY; Anträge; Anträge 2016")
   private String objterms;
 
+  @Schema() private String definition;
+
+  @Schema private List<UserFormsReferenz> userformsdata;
+
   public static CreateInternalBodyParams sample() {
     return CreateInternalBodyParams.builder()
         .referrednumber("COO.1.2301.1.1042432")
@@ -91,6 +98,8 @@ public class CreateInternalBodyParams {
         .doctemplate("LHM Schreiben Extern")
         .incattachments("Ausfüllhile Antrag auf Baugenehmigung")
         .objterms("Firma XY; Anträge; Anträge 2016")
+        .definition("COO.1.2301.1.2222222")
+        .userformsdata(null)
         .build();
   }
 }
