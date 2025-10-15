@@ -23,9 +23,7 @@ dms:
   # Standardnamensbereich für Anweisungen an Fabasoft
   default:
     operation:
-      namespace: 
-  # DMS url
-  url: 
+      namespace: http://schemas.fabasoft.com/websvc/LHMBAI_15_1700_GIWSD/
   auth:
     bcrypt:
       strength: 10
@@ -64,10 +62,6 @@ services:
     # In case you need a proxy add this part to your docker-compose.yml. If you don't need a proxy simply remove environment: JAVA_TOOL_OPTIONS: -Dhttp.proxyHost=yourProxy.com -Dhttp.proxyPort=Port
     environment:
      JAVA_TOOL_OPTIONS: -Dhttp.proxyHost=yourProxy.com -Dhttp.proxyPort=Port
-
-  volumes:
-    external-config-volume:
-      external: true
 ```
 
 ### Step Three - Start Container
