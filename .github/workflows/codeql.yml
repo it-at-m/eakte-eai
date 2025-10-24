@@ -4,11 +4,11 @@ env:
   # Whether to analyze Java code or not (only set to true if repo has Java source code)
   analyze-java: true
   # Build mode to use for analysis of Java code (e.g. none, autobuild, manual)
-  java-buildmode: autobuild
+  #java-buildmode: autobuild
   # Temurin JDK version to use for autobuild (only when java-buildmode is set to autobuild)
   java-version: 21
   # Whether to analyze JavaScript/TypeScript/Vue code or not (only set to true if repo has Javascript/Typescript/Vue source code)
-  analyze-javascript-typescript-vue: true
+  analyze-javascript-typescript-vue: false
   # Whether to analyze Python code or not (only set to true if repo has Python source code)
   analyze-python: false
   # Query set to use when analyzing the source code (e.g. default, security-extended, security-and-quality)
@@ -18,7 +18,7 @@ on:
   # Runs on pull requests and on pushes to main (in order to keep the regular scanning by GitHub working)
   pull_request:
   push:
-    branches: [main, proxy-with-github-image]
+    branches: [main]
 
 permissions:
   pull-requests: read
@@ -52,7 +52,7 @@ jobs:
       fail-fast: false
       matrix:
         build-path:
-          - eakte-eai/eakte-eai # JSON array formatted as string, contains the paths to the java projects to build
+          - eakte-eai # JSON array formatted as string, contains the paths to the java projects to build
     steps:
       - uses: it-at-m/lhm_actions/action-templates/actions/action-codeql@9767179088fd2e344d1a24c17404ab809a60f1b6 # v1.0.20
         if: ${{ env.analyze-java == 'true' && (github.ref_name == 'main' || needs.check-changes.outputs.java == 'true') }}
