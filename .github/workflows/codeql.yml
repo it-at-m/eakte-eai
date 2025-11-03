@@ -62,8 +62,8 @@ jobs:
           codeql-query: ${{ env.analysis-query }}
           java-version: ${{ env.java-version }}
           path: ${{ matrix.build-path }}
-          exclude: |
-            eakte-eai/target
+          #exclude: |
+          #  eakte-eai/target
   codeql-javascript-typescript-vue:
     name: Analyze JavaScript/TypeScript/Vue source files
     runs-on: ubuntu-latest
