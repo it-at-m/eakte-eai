@@ -1,6 +1,5 @@
 # eakte-eai
 
-anders
 
 Die EAkte EAI ist die Schnittstelle für Fachanwendungen der EAkte zum DMS über REST.
 
