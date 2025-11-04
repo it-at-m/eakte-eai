@@ -1,5 +1,7 @@
 # eakte-eai
 
+anders
+
 Die EAkte EAI ist die Schnittstelle für Fachanwendungen der EAkte zum DMS über REST.
 
 Eine aktuelle übersicht über alle Schnittstelle kann über Swagger bezogen werden: TODO Link auf Swagger URL in der CAP
