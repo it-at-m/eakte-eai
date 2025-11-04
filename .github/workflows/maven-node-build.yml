@@ -4,8 +4,9 @@ on:
   pull_request:
   push:
     branches:
-      - "main"
-      - "proxy-with-github-image"
+      - '*'
+    #  - "main"
+    #  - "proxy-with-github-image"
 
 jobs:
   build:
@@ -34,4 +35,6 @@ jobs:
           registry-password: ${{ secrets.GITHUB_TOKEN }}
           registry-username: ${{ github.actor }}
           image-tags: |
-            type=raw,value=dev
+              type=raw,value=${{ github.ref == 'refs/heads/main' && 'dev' || github.ref_name }}
+          
+            #  type=raw,value=dev
