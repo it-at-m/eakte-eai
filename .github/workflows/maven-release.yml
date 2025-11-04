@@ -6,11 +6,11 @@ on:
       releaseVersion:
         description: "Version to use when preparing a release (e.g., 1.2.3)"
         required: true
-        default: 0.0.1
+        default: 1.1.1
       developmentVersion:
         description: "Version to use for new local working copy (e.g., 1.2.4-SNAPSHOT)"
         required: true
-        default: 0.0.2-SNAPSHOT
+        default: 1.1.1-SNAPSHOT
       app-path:
         type: choice
         description: Service-Name
