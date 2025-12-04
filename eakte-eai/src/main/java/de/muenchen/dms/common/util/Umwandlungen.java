@@ -4,9 +4,20 @@
  */
 package de.muenchen.dms.common.util;
 
-import com.fabasoft.schemas.websvc.lhmbai_15_1700_giwsd.*;
-import de.muenchen.dms.common.model.*;
-
+import com.fabasoft.schemas.websvc.lhmbai_15_1700_giwsd.ArrayOfLHMBAI151700BusinessObjectType;
+import com.fabasoft.schemas.websvc.lhmbai_15_1700_giwsd.ArrayOfLHMBAI151700GIAttachmentType;
+import com.fabasoft.schemas.websvc.lhmbai_15_1700_giwsd.ArrayOfLHMBAI151700GIMetadataType;
+import com.fabasoft.schemas.websvc.lhmbai_15_1700_giwsd.ArrayOfLHMBAI151700GIObjectType;
+import com.fabasoft.schemas.websvc.lhmbai_15_1700_giwsd.ArrayOfLHMBAI151700GIUserFormsType;
+import com.fabasoft.schemas.websvc.lhmbai_15_1700_giwsd.ArrayOfstring;
+import com.fabasoft.schemas.websvc.lhmbai_15_1700_giwsd.LHMBAI151700GIAttachmentType;
+import com.fabasoft.schemas.websvc.lhmbai_15_1700_giwsd.LHMBAI151700GIMetadataType;
+import com.fabasoft.schemas.websvc.lhmbai_15_1700_giwsd.LHMBAI151700GIUserFormsType;
+import de.muenchen.dms.common.model.AttachmentType;
+import de.muenchen.dms.common.model.BusinessObjectReference;
+import de.muenchen.dms.common.model.MetadataReferenz;
+import de.muenchen.dms.common.model.Objektreferenz;
+import de.muenchen.dms.common.model.UserFormsReferenz;
 import java.time.OffsetDateTime;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
@@ -155,7 +166,7 @@ public class Umwandlungen {
   }
 
   public static ArrayOfLHMBAI151700GIUserFormsType wandleUserFormsGIZuUserFormsReferenz(
-          List<UserFormsReferenz> userFormsReferenz) {
+      List<UserFormsReferenz> userFormsReferenz) {
     ArrayOfLHMBAI151700GIUserFormsType userFormsType = new ArrayOfLHMBAI151700GIUserFormsType();
 
     if (userFormsReferenz == null) {
@@ -163,7 +174,7 @@ public class Umwandlungen {
     }
 
     List<LHMBAI151700GIUserFormsType> userFormsList =
-            userFormsType.getLHMBAI151700GIUserFormsType();
+        userFormsType.getLHMBAI151700GIUserFormsType();
 
     if (userFormsList == null) {
       userFormsList = new ArrayList<>();
@@ -173,7 +184,8 @@ public class Umwandlungen {
       LHMBAI151700GIUserFormsType userForm = new LHMBAI151700GIUserFormsType();
       userForm.setLHMBAI151700Ufreference(referenz.getLHMBAI_15_1700_ufreference());
 
-      ArrayOfstring arrayOfValue = convertToArrayOfString(referenz.getLHMBAI_15_1700_ufvalue());
+      List<String> prefixedValues = addPrefixToUserFormsKeys(referenz.getLHMBAI_15_1700_ufvalue());
+      ArrayOfstring arrayOfValue = convertToArrayOfString(prefixedValues);
       userForm.setLHMBAI151700Ufvalue(arrayOfValue);
 
       userFormsList.add(userForm);
@@ -186,5 +198,13 @@ public class Umwandlungen {
     ArrayOfstring arrayOfstring = new ArrayOfstring();
     arrayOfstring.getString().addAll(values);
     return arrayOfstring;
+  }
+
+  public static List<String> addPrefixToUserFormsKeys(List<String> values) {
+    List<String> prefixKeys = new ArrayList<>();
+    for (String keyName : values) {
+      prefixKeys.add("X" + keyName);
+    }
+    return prefixKeys;
   }
 }
