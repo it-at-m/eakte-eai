@@ -203,7 +203,7 @@ public abstract class AbstractDMSSoapProcessor implements Processor {
   /**
    * Gefundene Attachments in das Fabasoft SOAP format umwandeln.
    *
-   * @param Attachment Dateien mit Inhalt, name etc..
+   * @param file Dateien mit Inhalt, Name etc..
    * @return LHMBAI151700GIAttachmentType
    */
   protected LHMBAI151700GIAttachmentType createLHMBAI151700GIAttachment(final Attachment file) {
