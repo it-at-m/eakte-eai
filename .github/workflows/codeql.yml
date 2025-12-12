@@ -18,6 +18,7 @@ on:
   # Runs on pull requests and on pushes to main (in order to keep the regular scanning by GitHub working)
   pull_request:
   push:
+  workflow_dispatch:
     branches: [main]
 
 permissions:
