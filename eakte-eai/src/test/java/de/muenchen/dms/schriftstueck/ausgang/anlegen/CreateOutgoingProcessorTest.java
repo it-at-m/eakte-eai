@@ -99,12 +99,6 @@ class CreateOutgoingProcessorTest {
             """)
   void testeSonderzeichen() throws Exception {
     CreateOutgoingAnfrageDTO dto = erzeugeRestDatenobjekt();
-    Map<String, DataHandler> anhaenge = new HashMap<>();
-
-    anhaenge.put(
-        DATEINAME_MIT_SONDERZEICHEN,
-        TestDateianhaenge.erzeuge(DATEINAME_MIT_SONDERZEICHEN, DATEINAME_MIT_SONDERZEICHEN));
-
     Exchange ex = prozessorAusfuehren(dto, TestDateianhaenge.erzeugeMehrere(2), true);
     stelleDatentransferAufSoapObjektSicher(dto, 2, ex.getIn().getBody());
   }
