@@ -4,6 +4,11 @@ name: Actionlint
 on:
   # Runs on pull requests
   pull_request:
+  workflow_dispatch:
+
+permissions:
+  packages: write  # Berechtigung zum Pushen von Images
+  contents: read
 
 jobs:
   actionlint:
