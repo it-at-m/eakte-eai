@@ -1,5 +1,9 @@
 name: Build all
 
+permissions:
+  contents: read
+  packages: write
+
 on:
   pull_request:
   push:
