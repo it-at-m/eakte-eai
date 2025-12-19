@@ -13,9 +13,7 @@ import java.time.OffsetDateTime;
 import java.util.Arrays;
 import javax.xml.datatype.DatatypeConfigurationException;
 
-class TestReadFileExample {
-
-  private TestReadFileExample() {}
+interface TestReadFileExample {
 
   static ReadFileGIResponse erzeugeAntwort() throws DatatypeConfigurationException {
     final ObjectFactory objectFactory = new ObjectFactory();
