@@ -27,7 +27,6 @@ public class UpdateContentObjectProcessor extends AbstractDMSSoapProcessor {
       final UpdateContentObjectGI parameter =
           createUpdateContentObjectGI(
               objectId,
-              dto,
               getNutzer(exchange),
               getRolle(exchange),
               getOrganisationseinheit(exchange),
@@ -44,7 +43,6 @@ public class UpdateContentObjectProcessor extends AbstractDMSSoapProcessor {
       final UpdateContentObjectGI parameter =
           createUpdateContentObjectGI(
               objectId,
-              dto,
               getNutzer(exchange),
               getRolle(exchange),
               getOrganisationseinheit(exchange),
@@ -56,7 +54,6 @@ public class UpdateContentObjectProcessor extends AbstractDMSSoapProcessor {
 
   private UpdateContentObjectGI createUpdateContentObjectGI(
       final String objectId,
-      final UpdateContentObjectDTO dto,
       final String nutzer,
       final String rolle,
       final String organisationseinheit,

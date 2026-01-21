@@ -95,8 +95,7 @@ public class DmsAuthConfiguration {
           .securityMatcher("/error**")
           .authorizeHttpRequests(
               rmr -> rmr.requestMatchers(antMatcher(HttpMethod.GET, "/error**")).permitAll())
-          .httpBasic(Customizer.withDefaults())
-          .csrf(AbstractHttpConfigurer::disable);
+          .httpBasic(Customizer.withDefaults());
     }
     return http.build();
   }
