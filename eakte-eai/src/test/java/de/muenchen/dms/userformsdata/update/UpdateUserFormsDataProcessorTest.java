@@ -6,7 +6,6 @@ import static org.hamcrest.Matchers.notNullValue;
 
 import com.fabasoft.schemas.websvc.lhmbai_15_1700_giwsd.ArrayOfLHMBAI151700GIUserFormsType;
 import com.fabasoft.schemas.websvc.lhmbai_15_1700_giwsd.UpdateUserFormsDataGI;
-import de.muenchen.dms.common.util.Umwandlungen;
 import de.muenchen.dms.test.TestExchanges;
 import java.util.List;
 import org.apache.camel.CamelContext;
@@ -92,9 +91,7 @@ class UpdateUserFormsDataProcessorTest {
           actual.getLHMBAI151700Ufreference(), equalTo(expected.getLHMBAI_15_1700_ufreference()));
 
       List<String> listStringValues = actual.getLHMBAI151700Ufvalue().getString();
-      List<String> valueList =
-          Umwandlungen.addPrefixToUserFormsKeys(expected.getLHMBAI_15_1700_ufvalue());
-      assertThat(listStringValues, equalTo(valueList));
+      assertThat(listStringValues, equalTo(expected.getLHMBAI_15_1700_ufvalue()));
     } else {
       Assertions.fail();
     }

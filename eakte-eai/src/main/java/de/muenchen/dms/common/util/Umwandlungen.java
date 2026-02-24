@@ -184,8 +184,7 @@ public class Umwandlungen {
       LHMBAI151700GIUserFormsType userForm = new LHMBAI151700GIUserFormsType();
       userForm.setLHMBAI151700Ufreference(referenz.getLHMBAI_15_1700_ufreference());
 
-      List<String> prefixedValues = addPrefixToUserFormsKeys(referenz.getLHMBAI_15_1700_ufvalue());
-      ArrayOfstring arrayOfValue = convertToArrayOfString(prefixedValues);
+      ArrayOfstring arrayOfValue = convertToArrayOfString(referenz.getLHMBAI_15_1700_ufvalue());
       userForm.setLHMBAI151700Ufvalue(arrayOfValue);
 
       userFormsList.add(userForm);
@@ -198,13 +197,5 @@ public class Umwandlungen {
     ArrayOfstring arrayOfstring = new ArrayOfstring();
     arrayOfstring.getString().addAll(values);
     return arrayOfstring;
-  }
-
-  public static List<String> addPrefixToUserFormsKeys(List<String> values) {
-    List<String> prefixKeys = new ArrayList<>();
-    for (String keyName : values) {
-      prefixKeys.add("X" + keyName);
-    }
-    return prefixKeys;
   }
 }
